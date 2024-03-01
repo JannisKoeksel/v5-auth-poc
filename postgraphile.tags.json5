@@ -1,0 +1,16 @@
+{
+  version: 1,
+  config: {
+    class: {
+      users: {
+        attribute: {
+          hashed_password: {
+            tags: {
+              behavior: "-*"
+            },
+          },
+        },
+      },
+    },
+  },
+}
