@@ -99,5 +99,5 @@ const pgl = postgraphile(preset);
 const serv = pgl.createServ(grafserv);
 await serv.addTo(app, server);
 server.listen(5050, () => {
-  console.log("Server listening at http://localhost:5678");
+  console.log("Server listening at http://localhost:5050");
 });

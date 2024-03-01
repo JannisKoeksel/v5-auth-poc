@@ -11,7 +11,7 @@ Uses:
 
 Clone this repo, and then run `yarn start`. The local database `v5_auth_poc`
 will have the `app_public` schema replaced, and a server will start at
-http://localhost:5678
+http://localhost:5050
 
 Issue query:
 
