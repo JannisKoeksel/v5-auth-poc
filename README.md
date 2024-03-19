@@ -19,9 +19,12 @@ Issue query:
 {
   allUsers {
     nodes {
+      id
       rowId
       username
       email
+      createdAt
+      updatedAt
     }
   }
 }
@@ -55,6 +58,16 @@ Querying with
 will return all users since Alice (user 1) is a member of both organizations.
 
 Further note that you can only see the email of the user indicated via `x-user-id`.
+
+Querying with
+
+```json
+{ "x-user-id": 3 }
+```
+
+will return all users since Caroline is a boss (user 3, is_admin = true),
+however the `createdAt` and `updatedAt` timestamps are nulled out for Dave
+since Caroline and Dave are not in the same organization.
 
 ## NOT SECURE
 
