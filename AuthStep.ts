@@ -15,7 +15,10 @@ type AuthRule =
       allow: false;
     };
 
+
+// should be an actual permission engine later 
 function getAuthRules(resource: SQLIdentifierNode, uid: string): AuthRule {
+  //@benji is that the correct way to get the identifier ?
   const identifier = sql.getIdentifierSymbol(resource)?.description;
 
   if (identifier == "users") {
@@ -45,15 +48,13 @@ export class AuthStep extends Step {
   }
 
   execute(details: ExecutionDetails): ExecutionResults<any> {
-    // 4. Return a callback for each execution that injects WHERE conditions into the query builder
     return details.indexMap(() => {
       return (qb: PgSelectQueryBuilder) => {
-     
-        // 1. Extract the user ID from context
+        // example uid -> should be taken from context
         const uid = "1";
-        
+
         const rules = getAuthRules(qb.alias as SQLIdentifierNode, uid);
-        // 3. If not allowed, abort
+
         if (!rules.allow) {
           throw new Error("Access denied");
         }
