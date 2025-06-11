@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "start": "yarn && yarn resetdb && GRAPHILE_ENV=development node --watch index.mjs",
-    "resetdb": "(createdb v5_auth_poc || true) && psql -X1v ON_ERROR_STOP=1 -f v5_auth_poc.sql v5_auth_poc"
+    "start": "GRAPHILE_ENV=development bun --watch index.ts",
+    "resetdb": "node scripts/resetdb.mjs"
   },
   "dependencies": {
     "express": "^4.18.3",
@@ -12,6 +12,8 @@
     "@types/express": "^4.17.21",
     "@types/node": "^20.11.24",
     "prettier": "^3.2.5",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "pg": "^8.10.0",
+    "pgtools": "^1.0.0"
   }
 }
